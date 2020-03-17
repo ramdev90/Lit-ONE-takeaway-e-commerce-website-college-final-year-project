@@ -1,0 +1,181 @@
+{{#if login}}
+{{#if user.isSeller}}
+<nav class="navbar navbar-expand-md bg-primary navbar-light">
+	<!-- Brand -->
+	<a class="navbar-brand text-white" href="#">Takeaway.in</a>
+
+	<!-- Toggler/collapsibe Button -->
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<!-- Navbar links -->
+	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/">
+					<i class="fa fa-home fa-lg"></i>
+				</a>
+			</li>
+			<div class="dropdown">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Shop Management
+				</button>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="/order-received">Order Received</a>
+					<a class="dropdown-item" href="#!">Order Delivered</a>
+					<a class="dropdown-item" href="/accepted-orders">Accepted Orders</a>
+					<hr>
+					<a class="dropdown-item" href="/view-product-details">Show my uploaded</a>
+					<a class="dropdown-item" href="/add-product">Add new product</a>
+				</div>
+			</div>
+			<div class="dropdown">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Account Management
+				</button>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="/seller-profile">Account Settings</a>
+					<a class="dropdown-item" href="/logout">Logout</a>
+				</div>
+			</div>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="#">
+					FAQs
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+{{/if}}
+{{#if user.isCustomer}}
+<nav class="navbar navbar-expand-md bg-primary navbar-light">
+	<!-- Brand -->
+	<a class="navbar-brand text-white" href="#">Takeaway.in</a>
+
+	<!-- Toggler/collapsibe Button -->
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<!-- Navbar links -->
+	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/">
+					<i class="fa fa-home fa-lg"></i>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/shopping-cart">
+					<i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+				</a>
+			</li>
+			<div class="dropdown">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Account Management
+				</button>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="/order-summery">Order Summery</a>
+					<a class="dropdown-item" href="/profile">Account Settings</a>
+					<a class="dropdown-item" href="/logout">Logout</a>
+				</div>
+			</div>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="#">
+					FAQs
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+{{/if}}
+{{#if user.isDelivery}}
+<nav class="navbar navbar-expand-md bg-primary navbar-light">
+	<!-- Brand -->
+	<a class="navbar-brand text-white" href="#">Takeaway.in</a>
+
+	<!-- Toggler/collapsibe Button -->
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<!-- Navbar links -->
+	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/">
+					<i class="fa fa-home fa-lg"></i>
+				</a>
+			</li>
+			<div class="dropdown">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Order Management
+				</button>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="/order-confirmed">View All Order</a>
+				</div>
+			</div>
+			<div class="dropdown">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Account Management
+				</button>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="/profile">Account Settings</a>
+					<a class="dropdown-item" href="/logout">Logout</a>
+				</div>
+			</div>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="#">
+					FAQs
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+{{/if}}
+{{else}}
+<nav class="navbar navbar-expand-md bg-primary navbar-light">
+	<!-- Brand -->
+	<a class="navbar-brand text-white" href="#">Takeaway.in</a>
+
+	<!-- Toggler/collapsibe Button -->
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<!-- Navbar links -->
+	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/">
+					<i class="fa fa-home fa-lg"></i>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/shopping-cart">
+					<i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+				</a>
+			</li>
+			<div class="dropdown">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Account Management
+				</button>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="/Customer">Customer Register</a>
+					<a class="dropdown-item" href="/Seller">Seller Register</a>
+					<a class="dropdown-item" href="/Delivery">Delivery Register</a>
+					<a class="dropdown-item" href="/login">Login
+						into your account</a>
+				</div>
+			</div>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="#">
+					FAQs
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+{{/if}}

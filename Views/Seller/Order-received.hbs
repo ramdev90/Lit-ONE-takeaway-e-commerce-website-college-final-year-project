@@ -1,0 +1,54 @@
+{{#if length}}
+<h1 class="text-center top-of-50">
+	You have received this order's...
+</h1>
+<div class="top-of-50 container">
+	<table id="example" class="table table-striped table-bordered" style="width: 100%;">
+		<thead>
+			<tr>
+				<th>Customer name</th>
+				<th>Their address</th>
+				<th>For product</th>
+				<th>Product price</th>
+				<th>Take actions</th>
+			</tr>
+		</thead>
+		{{#each myOrder}}
+		<tbody>
+			<tr>
+				<td>{{this.customerName}}</td>
+				<td>
+					<address>{{this.customerAddress}}</address>
+				</td>
+				<td>
+					<div style=" width: 350px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;">
+						<a href="/view-product-details">{{this.cart.productName}}</a></div>
+				</td>
+				<td>₹ {{this.cart.productPrice}}</td>
+				<td>
+					<form action="/accept-order/{{this.id}}" method="POST">
+						<button type="submit" class="btn btn-primary">
+							Accept order
+						</button>
+					</form>
+					/
+					<a href="#!action">Decline</a>
+				</td>
+			</tr>
+		</tbody>
+		{{/each}}
+	</table>
+</div>
+{{else}}
+<div class="text-center top-of-50 bottom-of-50">
+	<h1>Hey You have not received order</h1>
+	<a href="/view-product-details" class="btn btn-success top-of-20">Let's Change somthing in my uploaded
+		product</a>
+</div>
+{{/if}}
+
+<script>
+</script>

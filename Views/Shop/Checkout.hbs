@@ -1,0 +1,47 @@
+<div class="container top-of-50 bottom-of-50">
+	<div class="card">
+		<div class="card-header">
+			<h3>
+				Please fill the details and confirm order
+			</h3>
+			<h5>Total : {{totalPrice}}</h5>
+		</div>
+		<form action="/checkout" method="POST">
+			<div class="card-content row" style="padding: 10px;">
+				<div class="form-group col-sm-6">
+					<label for="usr">Your Name</label>
+					<input type="text" name="c_name" class="form-control" id="usr" name="username">
+				</div>
+				<div class="form-group col-sm-6">
+					<label for="addrss">Delivery Address</label>
+					<textarea class="form-control" name="c_address" rows="5" id="address"></textarea>
+				</div>
+				<div class="form-group col-sm-6">
+					<label for="holdername">Card Holder Name</label>
+					<input type="text" class="form-control" name="cardHolderName" id="usr" name="holdername">
+				</div>
+				<div class="form-group col-sm-6">
+					<label for="cardNumber">Credit / Debit card Number</label>
+					<input type="text" class="form-control" name="cardNumber" id="usr" name="cardNumber">
+				</div>
+				<div class="form-group col-sm-4">
+					<label for="cardNumber">Card expiration month</label>
+					<input type="text" class="form-control" name="expMonth" id="usr" name="cardNumber">
+				</div>
+				<div class="form-group col-sm-4">
+					<label for="cardNumber">Card expiration year</label>
+					<input type="text" class="form-control" name="expYear" id="usr" name="cardNumber">
+				</div>
+				<div class="form-group col-sm-4">
+					<label for="cardNumber">CVV (this is back on your card)</label>
+					<input type="text" class="form-control" name="cardCVV" id="usr" name="cardNumber">
+				</div>
+				<div class="form-group col-sm-12  text-right">
+					<button type="submit" class="btn btn-outline-success">
+						Buy now
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,66 @@
+.text-grey {
+  color: grey !important;
+}
+
+.navbar {
+  padding: 10px !important;
+}
+
+.navbar .navbar-brand {
+  font-size: 1.5em;
+}
+
+.background {
+  background: url("https://images.pexels.com/photos/34577/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+  padding: 20px;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 80vh;
+}
+
+.list {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.card-img {
+  padding: 10px;
+}
+
+.productName {
+  height: 50px;
+}
+
+.top-of-20 {
+  margin-top: 20px !important;
+}
+.bottom-of-20 {
+  margin-bottom: 20px !important;
+}
+
+.top-of-50 {
+  margin-top: 50px !important;
+}
+
+.bottom-of-50 {
+  margin-bottom: 50px !important;
+}
+
+.top-of-100 {
+  margin-top: 100px !important;
+}
+
+.bottom-of-100 {
+  margin-bottom: 100px !important;
+}
+
+.divider {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: 0.5px solid grey !important;
+}
+
+.size1point2em {
+  font-size: 1.2em;
+}

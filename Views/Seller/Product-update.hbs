@@ -1,0 +1,50 @@
+<div class="container top-of-50">
+	<div class="col-md-12">
+		<div class="card">
+			<div class="card-header">
+				<h3>
+					Hey Do some changes on your product details
+				</h3>
+			</div>
+			<div class="card-content">
+				<div class="container">
+					<form class="row top-of-20" class="was-validated" action="/updateProduct/{{product.id}}"
+						method="POST">
+						<div class="form-group col-md-6">
+							<label for="name">Product Name</label>
+							<div class="invalid-feedback">Please fill out this field.</div>
+							<input type="name" name="title" value="{{product.productName}}" class="form-control"
+								id="email">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="img">Product Image URL</label>
+							<input type="img" name="image" value="{{product.productImage}}" class="form-control"
+								id="email">
+						</div>
+						<div class="form-group col-md-12">
+							<label for="comment">Product Description</label>
+							<textarea class="form-control" rows="5" name="desc" id="desc">
+								{{product.productDescription}}
+							</textarea>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="price">Price</label>
+							<input type="number" name="price" value="{{product.productPrice}}"
+								class="form-control" id="price">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="Qty">Quantity</label>
+							<input type="number" name="qty" value="{{product.productQty}}" class="form-control"
+								id="Qty">
+						</div>
+						<div class=" form-group col-md-12 ml-auto">
+							<button type="submit" class="btn btn-primary ">
+								Update Details
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

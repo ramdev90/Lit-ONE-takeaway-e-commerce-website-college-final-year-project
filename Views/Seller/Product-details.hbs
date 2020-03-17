@@ -1,0 +1,43 @@
+{{#if user.isSeller}}
+{{!-- Details --}}
+{{#if length}}
+<div class="top-of-50">
+	<div class="row container">
+		{{#each myProducts}}
+		<div class="col-lg-4">
+			<div class="card">
+				<img class="card-img" src="{{this.productImage}}" class="img-fluid" alt="Card image" width="300px">
+				<div class="card-body">
+					<h4 class="card-title" style=" width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;">{{this.productName}}</h4>
+					<div class=" row">
+						<div class="col -lg-6 text-center">
+							<form action="/delete-product/{{this.id}}" method="POST">
+								<button class="btn btn-outine-danger">
+									<i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+								</button>
+							</form>
+						</div>
+						<div class="col -lg-6 text-center">
+							<a href="/update-product/{{this.id}}" class="btn btn-outline-success">
+								<i class="fa fa-pencil" aria-hidden="true"></i> Edit
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+</div>
+{{else}}
+<div class="top-of-20 text-center">
+	<h3>No Product has been added by you</h3>
+	<a href="/add-product">Add now</a>
+</div>
+{{/if}}
+{{else}}
+401 Access denied.
+{{/if}}

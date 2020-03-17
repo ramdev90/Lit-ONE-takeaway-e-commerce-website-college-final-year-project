@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{title}}</title>
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+</head>
+
+<body>
+	{{>Navbar}}
+	{{{body}}}
+	{{>Footer}}
+	<script src="/javascripts/jquery.min.js"></script>
+	<script src="/javascripts/popper.min.js"></script>
+	<script src="/javascripts/bootstrap.min.js"></script>
+	<script src='https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js'></script>
+	<script src='https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js'></script>
+	<script src='https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js'></script>
+	<script src='https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js'></script>
+	<script>
+		$(document).ready(function () {
+			$('#example').DataTable();
+		});
+	</script>
+</body>
+
+</html>

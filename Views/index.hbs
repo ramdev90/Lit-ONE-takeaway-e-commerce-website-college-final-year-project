@@ -1,0 +1,211 @@
+{{#if login}}
+{{#if user.isSeller}}
+{{!-- Seller --}}
+
+<div class="container">
+	<div class="text-center top-of-50">
+		<h3>
+			Hey {{user.email}}
+		</h3>
+	</div>
+	<h6>Shotcuts :- </h6>
+	<div class="row top-of-20">
+		<div class="col-md-3 top-of-20">
+			<div class="card">
+				<div class="card-header text-center">
+					<h4>
+						Product Added
+					</h4>
+				</div>
+				<div class="card-footer text-center">
+					<a href="/view-product-details">
+						<i class="fa fa-eye"></i>
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col-md-3 top-of-20">
+			<div class="card">
+				<div class="card-header text-center">
+					<h4>
+						Orders Received
+					</h4>
+				</div>
+				<div class="card-footer text-center">
+					<a href="/order-received">
+						<i class="fa fa-eye"></i>
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col-md-3 top-of-20">
+			<div class="card">
+				<div class="card-header text-center">
+					<h4>
+						Previous Orders
+					</h4>
+				</div>
+				<div class="card-footer text-center">
+					<a href="/order-privious">
+						<i class="fa fa-eye"></i>
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col-md-3 top-of-20">
+			<div class="card">
+				<div class="card-header text-center">
+					<h4>
+						Upload product
+					</h4>
+				</div>
+				<div class="card-footer text-center">
+					<a href="/add-product">
+						<i class="fa fa-upload"></i>
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+
+		<div class="col-md-3 top-of-20">
+			<div class="card">
+				<div class="card-header text-center">
+					<h4>
+						Payment gateway
+					</h4>
+				</div>
+				<div class="card-footer text-center">
+					<a href="/payment-gateway">
+						<i class="fa fa-arrow-right"></i>
+					</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container top-of-50 bottom-of-50">
+	<div class="text-center">
+		<h1>What's New On Site?</h1>
+	</div>
+	<div class="text-center">
+		This is something that uploaded by admin
+	</div>
+</div>
+
+{{/if}}
+{{#if user.isDelivery}}
+{{!-- Delivery --}}
+<div class="container">
+	<div class="text-center top-of-50">
+		<h3>
+			Some Short Details
+		</h3>
+	</div>
+	<h6>Shotcuts :- </h6>
+	<div class="row top-of-20">
+		<div class="col-md-3 top-of-20">
+			<div class="card">
+				<div class="card-header text-center">
+					<h4>
+						Order Confirmed
+					</h4>
+				</div>
+				<div class="card-footer text-center">
+					<a href="/order-confirmed">
+						<i class="fa fa-eye"></i>
+					</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+{{/if}}
+{{#if user.isCustomer}}
+{{!-- Customer --}}
+<div class="background">
+</div>
+{{#if length}}
+<div class="list">
+	<div class="text-center">
+		<h1>All Products</h1>
+	</div>
+	<div class="row container">
+		{{#each product}}
+		<div class="col-lg-4">
+			<div class="card">
+				<img class="card-img" src="{{this.productImage}}" class="img-fluid" alt="Card image" width="100%">
+				<div class="card-body">
+					<h4 class="card-title" style=" width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;">{{this.productName}}</h4>
+					<div class=" row">
+						<div class="col -lg-6">
+							<a href="/add-to-cart/{{this.id}}" class="btn btn-success">
+								<i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> +1
+							</a>
+						</div>
+						<div class="col -lg-6">
+							<a href="/product-details/{{this.id}}" class="btn">
+								Detailed View
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+</div>
+{{/if}}
+{{/if}}
+{{else}}
+<div class="background">
+</div>
+{{#if length}}
+<div class="list">
+	<div class="text-center">
+		<h1>All Products</h1>
+	</div>
+	<div class="row container">
+		{{#each product}}
+		<div class="col-lg-4">
+			<div class="card">
+				<img class="card-img" src="{{this.productImage}}" class="img-fluid" alt="Card image" width="100%">
+				<div class="card-body">
+					<h4 class="card-title" style=" width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;">{{this.productName}}</h4>
+					<div class=" row">
+						<div class="col -lg-6">
+							<a href="/add-to-cart/{{this.id}}" class="btn btn-success">
+								<i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> +1
+							</a>
+						</div>
+						<div class="col -lg-6">
+							<a href="/product-details/{{this.id}}" class="btn">
+								Detailed View
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+</div>
+{{/if}}
+{{/if}}

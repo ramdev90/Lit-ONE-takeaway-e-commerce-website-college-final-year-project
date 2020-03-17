@@ -1,0 +1,50 @@
+<div class="container">
+	<div class="row" style="border-bottom: 1px solid black;">
+		<div class="col-lg-6 top-of-100">
+			<div>
+				<img src="{{detail.productImage}}" class="img-fluid" alt="">
+			</div>
+		</div>
+		<div class="col-lg-6 top-of-50">
+			<h3>{{detail.productName}}</h3>
+			<div class="size1point2em text-muted">
+				From Lit-ONE Seller
+			</div>
+			<div class="top-of-50 size1point2em">
+				{{detail.productDescription}}
+			</div>
+			<div class="text-right top-of-50 bottom-of-50">
+				<a href="#BuyNow" class="btn btn-dark">
+					₹ {{detail.productPrice}}
+				</a>
+				<a href="#addtocart" class="btn btn-dark ">
+					<i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> +1
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="top-of-20 bottom-of-20">
+		<div class="top-of-20 bottom-of-50">
+			<h3> <i class="fa fa-comments" aria-hidden="true"></i>
+				Reviews</h3>
+		</div>
+		<div class="card">
+			<div class="card-header bg-white">
+				<h4>
+					test says
+				</h4>
+			</div>
+			<div class="card-body bg-white">
+				Good Product quality always
+			</div>
+		</div>
+		<form action="/comment" class="top-of-50">
+			<div class="form-group">
+				<label for="comment">Add my review:</label>
+				<textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary"> <i class="fa fa-envelope" aria-hidden="true"></i>
+				comment</button>
+		</form>
+	</div>
+</div>
