@@ -21,7 +21,7 @@
 					<address>{{this.customerAddress}}</address>
 				</td>
 				<td>
-					<div style=" width: 350px;
+					<div style=" width: 250px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;">
@@ -30,14 +30,9 @@
 				<td>₹ {{this.cart.productPrice}}</td>
 				<td>
 					<div>
-						<form action="/outfordelivery/{{this.id}}" onsubmit="confrimation()" method="POST">
-							<button type="submit" class="btn btn-success">
-								Accept
-							</button>
-						</form>
-						<form action="/delivered" method="POST" style="margin-top: 5px;">
-							<button type="submit" class="btn btn-success">
-								Delivered
+						<form action="/outfordelivery/{{this.id}}" method="POST">
+							<button type="submit" class="btn btn-outline-success btn-sm">
+								Confirm Delivery
 							</button>
 						</form>
 					</div>
