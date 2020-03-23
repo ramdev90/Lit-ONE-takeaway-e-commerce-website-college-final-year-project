@@ -2,7 +2,7 @@ const router = require("express").Router();
 const passport = require("passport");
 const Order = require("../Models/Order");
 
-router.get("/Delivery-register", isDelivery, (req, res, next) => {
+router.get("/Delivery", notDelivery, (req, res, next) => {
 	res.render("delivery/register", {
 		title: "Create new account | Delivery Boy"
 	});
