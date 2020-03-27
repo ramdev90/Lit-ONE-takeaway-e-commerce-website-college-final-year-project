@@ -4,7 +4,7 @@
 	"description": "KSV e-commerce system with 4 modules Customer, seller, admin & delivery",
 	"main": "server.js",
 	"scripts": {
-		"start": "node server.js"
+		"start": "node Server.js"
 	},
 	"author": "",
 	"license": "ISC",
