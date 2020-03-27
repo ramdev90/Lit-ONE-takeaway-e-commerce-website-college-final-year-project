@@ -32,7 +32,6 @@ mongoose.connect(
 		}
 	}
 );
-
 require("./Config/Passport");
 
 // view engine setup
