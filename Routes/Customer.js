@@ -5,7 +5,7 @@ const Product = require("../models/Product");
 const Order = require("../models/Order");
 const nodemailer = require("nodemailer");
 const { request, response } = require("express");
-const { initializePayment, verifyPayment } = require("../config/paystack")(
+const { initializePayment, verifyPayment } = require("../Config/paystack")(
 	request
 );
 

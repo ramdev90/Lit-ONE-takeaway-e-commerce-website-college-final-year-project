@@ -20,6 +20,8 @@ const {
 const Handlebars = require("handlebars");
 const path = require("path");
 
+require("./Config/Passport");
+
 mongoose.connect(
 	"mongodb://root:abc123@ds211829.mlab.com:11829/takeaway",
 	{
@@ -32,7 +34,6 @@ mongoose.connect(
 		}
 	}
 );
-require("./config/passport");
 
 // view engine setup
 app.set("view engine", "hbs");

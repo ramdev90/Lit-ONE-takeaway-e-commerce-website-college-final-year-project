@@ -1,7 +1,6 @@
-const Passport = require("./node_modules/passport");
-const localPassport = require("./node_modules/passport-local").Strategy;
+const Passport = require("passport");
+const localPassport = require("passport-local").Strategy;
 const User = require("../models/User");
-const passport = require("./node_modules/passport");
 
 Passport.serializeUser((user, done) => {
 	done(null, user.id);
@@ -124,7 +123,7 @@ Passport.use(
 
 // All User Login
 // ****************************************************** //
-passport.use(
+Passport.use(
 	"login",
 	new localPassport(
 		{
