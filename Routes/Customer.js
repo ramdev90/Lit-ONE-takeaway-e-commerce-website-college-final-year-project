@@ -4,6 +4,10 @@ const Cart = require("../Models/Cart");
 const Product = require("../Models/Product");
 const Order = require("../Models/Order");
 const nodemailer = require("nodemailer");
+const { request, response } = require("express");
+const { initializePayment, verifyPayment } = require("../Config/paystack")(
+	request
+);
 
 const transporter = nodemailer.createTransport({
 	service: "gmail",
@@ -110,52 +114,50 @@ router.post("/checkout", isCustomer, async (req, res, next) => {
 	} else {
 		var cart = new Cart(req.session.cart);
 		// console.log(cart.sellerId);
-		const newOrder = new Order({
-			amountPaid: cart.totalPrice,
-			cart: cart.id,
-			accountId: req.user.id,
-			sellerId: cart.sellerId,
+		const form = {
 			customerName: req.body.c_name,
+			email: req.body.email,
 			customerAddress: req.body.c_address,
-			cardHolderName: req.body.cardHolderName,
-			cardNumber: req.body.cardNumber,
-			expMonth: req.body.expMonth,
-			expYear: req.body.expYear,
-			cardCVV: req.body.cardCVV
+			amountPaid: cart.totalPrice
+		};
+		initializePayment(form, (err, body) => {
+			if (err) {
+				console.log(err);
+			}
+			response = JSON.parse(body);
+			console.log(response);
+			res.redirect(response.data.authorization_url);
 		});
-		newOrder
+	}
+});
+
+router.get("/paystack/callback", (req, res, next) => {
+	const ref = req.query.reference;
+	verifyPayment(ref, (err, body) => {
+		if (err) {
+			console.log(err);
+			res.redirect("/error");
+		}
+		response = JSON.parse(body);
+		const data = (_.at(response.data, [
+			"reference",
+			"amount",
+			"email",
+			"c_name"
+		])[(reference, amount, email, c_name)] = data);
+		newOrder = { reference, amount, email, c_name };
+		const customer = new Order(newOrder);
+		customer
 			.save()
 			.then((data) => {
-				const mailOptions = {
-					from: "teamviewer993@gmail.com",
-					to: req.user.email,
-					subject: "Your order has been confirmed...",
-					text:
-						"Hello " +
-						newOrder.customerName +
-						", Your order has been placed by takeaway online shopping market at dated " +
-						newOrder.createdAt +
-						" ,The order details is " +
-						cart.title +
-						"Your order id is " +
-						newOrder.id +
-						" give this id to a delivery boy for the confirmation. " +
-						"Thank you..."
-				};
-				transporter.sendMail(mailOptions, (err, info) => {
-					if (err) {
-						console.log(err);
-					} else {
-						console.log("Email sent " + info.response);
-					}
-				});
-				// console.log(data);
-				res.redirect("/order-summery");
+				if (data) {
+					res.redirect("/receipt/+id");
+				}
 			})
 			.catch((err) => {
-				console.log(err);
+				res.redirect("/error");
 			});
-	}
+	});
 });
 
 router.get("/order-summery", isCustomer, async (req, res, next) => {
