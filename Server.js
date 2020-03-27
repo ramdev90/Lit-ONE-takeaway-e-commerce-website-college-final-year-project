@@ -8,10 +8,10 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const Mongo = require("connect-mongo")(session);
 const port = process.env.PORT || 3000;
-const indexRoutes = require("./Routes/index");
-const sellerRoutes = require("./Routes/Seller");
-const customerRoutes = require("./Routes/Customer");
-const deliveryRoutes = require("./Routes/DeliveryBoy");
+const indexRoutes = require("./routes/index");
+const sellerRoutes = require("./routes/seller");
+const customerRoutes = require("./routes/customer");
+const deliveryRoutes = require("./routes/deliveryBoy");
 const mongoose = require("mongoose");
 const expressHbs = require("express-handlebars");
 const {
@@ -32,7 +32,7 @@ mongoose.connect(
 		}
 	}
 );
-require("./Config/Passport");
+require("./config/passport");
 
 // view engine setup
 app.set("view engine", "hbs");

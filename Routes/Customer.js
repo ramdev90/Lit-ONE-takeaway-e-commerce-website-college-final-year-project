@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const passport = require("passport");
-const Cart = require("../Models/Cart");
-const Product = require("../Models/Product");
-const Order = require("../Models/Order");
+const Cart = require("../models/Cart");
+const Product = require("../models/Product");
+const Order = require("../models/Order");
 const nodemailer = require("nodemailer");
 const { request, response } = require("express");
-const { initializePayment, verifyPayment } = require("../Config/paystack")(
+const { initializePayment, verifyPayment } = require("../config/paystack")(
 	request
 );
 

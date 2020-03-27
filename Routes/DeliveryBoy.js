@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const passport = require("passport");
-const Order = require("../Models/Order");
+const Order = require("../models/Order");
 
 router.get("/Delivery", notDelivery, (req, res, next) => {
 	res.render("delivery/register", {

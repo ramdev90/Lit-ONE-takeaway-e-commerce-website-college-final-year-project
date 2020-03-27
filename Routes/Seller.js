@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const Product = require("../Models/Product");
-const Order = require("../Models/Order");
+const Product = require("../models/Product");
+const Order = require("../models/Order");
 const passport = require("passport");
 
 router.get("/Seller", notSeller, (req, res, next) => {
