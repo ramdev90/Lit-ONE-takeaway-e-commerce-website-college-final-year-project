@@ -15,34 +15,39 @@ const deliveryRoutes = require("./Routes/DeliveryBoy");
 const mongoose = require("mongoose");
 const expressHbs = require("express-handlebars");
 const {
-  allowInsecurePrototypeAccess
+	allowInsecurePrototypeAccess
 } = require("@handlebars/allow-prototype-access");
 const Handlebars = require("handlebars");
 const path = require("path");
 
 mongoose.connect(
-  "mongodb://127.0.0.1:27017/takeaway",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  },
-  err => {
-    if (err) {
-      console.log(err);
-    }
-  }
+	"mongodb://root:abc123@ds211829.mlab.com:11829/takeaway",
+	{
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	},
+	(err) => {
+		if (err) {
+			console.log(err);
+		}
+	}
 );
 
 require("./Config/Passport");
-app.engine(
-  ".hbs",
-  expressHbs({
-    defaultLayout: "layout",
-    extname: ".hbs",
-    handlebars: allowInsecurePrototypeAccess(Handlebars)
-  })
-);
+
+// view engine setup
 app.set("view engine", "hbs");
+
+app.engine(
+	"hbs",
+	expressHbs({
+		extname: "hbs",
+		defaultView: "default",
+		layoutsDir: __dirname + "/views/layouts/",
+		partialsDir: __dirname + "/views/partials/",
+		handlebars: allowInsecurePrototypeAccess(Handlebars)
+	})
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -53,13 +58,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(
-  session({
-    secret: "Session",
-    resave: true,
-    saveUninitialized: true,
-    store: new Mongo({ mongooseConnection: mongoose.connection }),
-    cookie: { maxAge: 100 * 60 * 1000 }
-  })
+	session({
+		secret: "Session",
+		resave: true,
+		saveUninitialized: true,
+		store: new Mongo({ mongooseConnection: mongoose.connection }),
+		cookie: { maxAge: 100 * 60 * 1000 }
+	})
 );
 
 app.use(passport.initialize());
@@ -68,9 +73,9 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {
-  res.locals.login = req.isAuthenticated();
-  res.locals.session = req.session;
-  next();
+	res.locals.login = req.isAuthenticated();
+	res.locals.session = req.session;
+	next();
 });
 
 app.use(flash());
