@@ -2,9 +2,9 @@
 	"name": "takeaway",
 	"version": "1.0.0",
 	"description": "KSV e-commerce system with 4 modules Customer, seller, admin & delivery",
-	"main": "server.js",
+	"main": "app.js",
 	"scripts": {
-		"start": "node Server.js"
+		"start": "node app.js"
 	},
 	"author": "",
 	"license": "ISC",
