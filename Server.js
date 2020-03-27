@@ -37,7 +37,6 @@ mongoose.connect(
 
 // view engine setup
 app.set("view engine", "hbs");
-
 app.engine(
 	"hbs",
 	expressHbs({
