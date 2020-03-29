@@ -25,6 +25,7 @@
 		"passport": "^0.4.1",
 		"passport-local": "^1.0.0",
 		"path": "^0.12.7",
-		"stripe": "^8.29.0"
+		"paystack": "^2.0.1",
+		"stripe": "^7.9.1"
 	}
 }

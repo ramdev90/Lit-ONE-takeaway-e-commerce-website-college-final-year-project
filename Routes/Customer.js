@@ -5,9 +5,8 @@ const Product = require("../models/Product");
 const Order = require("../models/Order");
 const nodemailer = require("nodemailer");
 const { request, response } = require("express");
-const { initializePayment, verifyPayment } = require("../Config/paystack")(
-	request
-);
+const { APIKEY } = require("../Config/stripe");
+const Stripe = require("stripe")("APIKEY");
 
 const transporter = nodemailer.createTransport({
 	service: "gmail",
@@ -113,51 +112,40 @@ router.post("/checkout", isCustomer, async (req, res, next) => {
 		return res.redirect("shopping-cart", { products: null });
 	} else {
 		var cart = new Cart(req.session.cart);
-		// console.log(cart.sellerId);
-		const form = {
-			customerName: req.body.c_name,
-			email: req.body.email,
-			customerAddress: req.body.c_address,
-			amountPaid: cart.totalPrice
-		};
-		initializePayment(form, (err, body) => {
-			if (err) {
-				console.log(err);
-			}
-			response = JSON.parse(body);
-			console.log(response);
-			res.redirect(response.data.authorization_url);
-		});
-	}
-});
-
-router.get("/paystack/callback", (req, res, next) => {
-	const ref = req.query.reference;
-	verifyPayment(ref, (err, body) => {
-		if (err) {
-			console.log(err);
-			res.redirect("/error");
-		}
-		response = JSON.parse(body);
-		const data = (_.at(response.data, [
-			"reference",
-			"amount",
-			"email",
-			"c_name"
-		])[(reference, amount, email, c_name)] = data);
-		newOrder = { reference, amount, email, c_name };
-		const customer = new Order(newOrder);
-		customer
-			.save()
-			.then((data) => {
-				if (data) {
-					res.redirect("/receipt/+id");
+		Stripe.charges.create(
+			{
+				amount: cart.totalPrice * 100,
+				currency: "usd",
+				source: req.body.stripeToken,
+				decription: "test charges"
+			},
+			(err, charge) => {
+				if (err) {
+					console.log(err);
+					req.flash("err", err.message);
+					return res.redirect("/checkout");
 				}
-			})
-			.catch((err) => {
-				res.redirect("/error");
-			});
-	});
+				const response = new Order({
+					cart: cart.id,
+					accountId: req.user.id,
+					sellerId: cart.sellerId,
+					amountPaid: cart.totalPrice,
+					customerName: req.body.c_name,
+					customerAddress: req.body.c_address
+				}).save((err, result) => {
+					if (err) {
+						console.log("Database Saving Error : " + err);
+						res.redirect("/checkout");
+					}
+					req.flash("success", "order successfull");
+					console.log("Stripe success");
+					req.session.cart = null;
+					res.redirect("/order-summery");
+				});
+				console.log(response);
+			}
+		);
+	}
 });
 
 router.get("/order-summery", isCustomer, async (req, res, next) => {
