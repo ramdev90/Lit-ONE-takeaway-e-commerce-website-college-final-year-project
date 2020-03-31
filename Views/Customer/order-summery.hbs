@@ -1,12 +1,19 @@
+<div class="row">
+	<div class="col-sm-6 col-md-4 offset-md-4 offset-md-3">
+		<div id="success" class="alert alert-success {{#if noMessage}}d-none{{/if}}" role="alert">
+			{{ successMsg }}
+		</div>
+	</div>
+</div>
 {{#if length}}
-<div class="container-fluid top-of-50">
+<div class="container top-of-50 bottom-of-50">
 	<div class="row">
 		{{#each order}}
 		<div class="col-sm-12 col-lg-4">
 			<div class="card">
 				<div class="card-header">
 					<div>
-						<h3 style=" width: 350px;
+						<h3 style=" width: 300px;
   white-space: nowrap;
   overflow: hidden;
   text-align: center!important;

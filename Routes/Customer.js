@@ -4,9 +4,8 @@ const Cart = require("../models/Cart");
 const Product = require("../models/Product");
 const Order = require("../models/Order");
 const nodemailer = require("nodemailer");
-const { request, response } = require("express");
 const { APIKEY } = require("../Config/stripe");
-const Stripe = require("stripe")("APIKEY");
+const Stripe = require("stripe")(APIKEY);
 
 const transporter = nodemailer.createTransport({
 	service: "gmail",
@@ -116,8 +115,8 @@ router.post("/checkout", isCustomer, async (req, res, next) => {
 			{
 				amount: cart.totalPrice * 100,
 				currency: "usd",
-				source: req.body.stripeToken,
-				decription: "test charges"
+				source: req.body.stripeToken, // Obtained from Stripe.js
+				description: "Takeaway Testing Payments"
 			},
 			(err, charge) => {
 				if (err) {
@@ -131,7 +130,8 @@ router.post("/checkout", isCustomer, async (req, res, next) => {
 					sellerId: cart.sellerId,
 					amountPaid: cart.totalPrice,
 					customerName: req.body.c_name,
-					customerAddress: req.body.c_address
+					customerAddress: req.body.c_address,
+					paymentId: charge.id
 				}).save((err, result) => {
 					if (err) {
 						console.log("Database Saving Error : " + err);
@@ -149,6 +149,7 @@ router.post("/checkout", isCustomer, async (req, res, next) => {
 });
 
 router.get("/order-summery", isCustomer, async (req, res, next) => {
+	var successMsg = req.flash("success")[0];
 	const user = req.user;
 	const orderDetails = await Order.find({ accountId: req.user.id }).populate(
 		"cart"
@@ -156,6 +157,8 @@ router.get("/order-summery", isCustomer, async (req, res, next) => {
 	// console.log(orderDetails);
 	res.render("customer/order-Summery", {
 		title: "Your order summery",
+		successMsg,
+		noMessage: !successMsg,
 		order: orderDetails,
 		length: orderDetails.length,
 		user

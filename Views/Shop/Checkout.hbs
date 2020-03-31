@@ -5,23 +5,43 @@
 				Please fill the details and confirm order
 			</h3>
 		</div>
-		<form action="/checkout" method="POST">
+		<div id="charge-error" class="alert alert-danger d-none">
+
+		</div>
+		<form action="/checkout" method="POST" id="checkout-form">
 			<h5 name="amount">Total : {{totalPrice}}</h5>
 			<div class="card-content row" style="padding: 10px;">
 				<div class="form-group col-sm-6">
-					<label for="usr">Your Name</label>
-					<input type="text" name="c_name" class="form-control" id="usr" name="username">
+					<label for="card-name">Your Name</label>
+					<input type="text" name="c_name" class="form-control" id="card-name" required>
 				</div>
 				<div class="form-group col-sm-6">
-					<label for="usr">Your Email</label>
-					<input type="text" name="email" class="form-control" id="usr" name="username">
+					<label for="email">Your Email</label>
+					<input type="text" name="email" class="form-control" id="email" required>
 				</div>
 				<div class="form-group col-sm-12">
-					<label for="addrss">Delivery Address</label>
-					<textarea class="form-control" name="c_address" rows="5" id="address"></textarea>
+					<label for="card-number">Card Number</label>
+					<input type="text" name="card-number" class="form-control" id="card-number" required>
+				</div>
+				<div class="form-group col-sm-4">
+					<label for="card-expiry-month">Expiry Month</label>
+					<input type="text" name="card-expiry-month" class="form-control" id="card-expiry-month"
+						required>
+				</div>
+				<div class="form-group col-sm-4">
+					<label for="card-expiry-year">Expiry Year</label>
+					<input type="text" name="card-expiry-year" class="form-control" id="card-expiry-year" required>
+				</div>
+				<div class="form-group col-sm-4">
+					<label for="card-cvc">CVV/CVC Number</label>
+					<input type="text" class="form-control" name="card-cvc" id="card-cvc" required></input>
+				</div>
+				<div class="form-group col-sm-12">
+					<label for="address">Delivery Address</label>
+					<textarea class="form-control" name="c_address" rows="5" id="address" required></textarea>
 				</div>
 				<div class="form-group col-sm-12  text-right">
-					<button type="submit" class="btn btn-outline-success">
+					<button id="btn" type="submit" class="btn btn-success">
 						Buy now
 					</button>
 				</div>
@@ -29,3 +49,6 @@
 		</form>
 	</div>
 </div>
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script src="/javaScripts/Checkout.js"></script>

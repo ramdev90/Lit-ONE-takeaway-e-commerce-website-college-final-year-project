@@ -1,4 +1,4 @@
-const APIKEY = "sk_test_iRnMJnylHpGQsdr97lSXmc06000lXyzNses";
+const APIKEY = "sk_test_bqcGKKek5UPsKM7tCXXg0YaH00fzCaJ19y";
 
 module.exports = {
 	APIKEY

@@ -18,7 +18,9 @@ const Order = new Schema(
 		isAccepted: { type: Boolean, default: false },
 		isDeclined: { type: Boolean, default: false },
 		outForDelivery: { type: Boolean, default: false },
-		isdelivered: { type: Boolean, default: false }
+		isdelivered: { type: Boolean, default: false },
+		ongoingDelivery: { type: Boolean, default: false },
+		orderReceived: { type: Boolean, default: false }
 	},
 	{
 		timestamps: true
