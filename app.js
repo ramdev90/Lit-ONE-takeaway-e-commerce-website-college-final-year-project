@@ -23,7 +23,7 @@ const path = require("path");
 require("./Config/Passport");
 
 mongoose.connect(
-	"mongodb://root:abc123@ds211829.mlab.com:11829/takeaway",
+	"mongodb+srv://ramdevr:vmbxFtVBdJtLz3Nx@cluster0.kd3ptqf.mongodb.net/?retryWrites=true&w=majority",
 	{
 		useNewUrlParser: true,
 		useUnifiedTopology: true
