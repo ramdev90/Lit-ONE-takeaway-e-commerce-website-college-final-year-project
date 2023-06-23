@@ -12,6 +12,7 @@ const indexRoutes = require("./routes/index");
 const sellerRoutes = require("./routes/seller");
 const customerRoutes = require("./routes/customer");
 const productRoutes = require("./Routes/product");
+const deliveryRoutes = require("./Routes/DeliveryBoy");
 const mongoose = require("mongoose");
 const expressHbs = require("express-handlebars");
 const {
