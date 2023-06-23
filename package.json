@@ -4,7 +4,7 @@
 	"description": "KSV e-commerce system with 4 modules Customer, seller, admin & delivery",
 	"main": "app.js",
 	"scripts": {
-		"start": "node app.js",
+		"start": "nodemon app.js",
 		"dev": "nodemon app.js"
 	},
 	"author": "",

@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 const indexRoutes = require("./routes/index");
 const sellerRoutes = require("./routes/seller");
 const customerRoutes = require("./routes/customer");
-const deliveryRoutes = require("./routes/deliveryBoy");
+const productRoutes = require("./Routes/product");
 const mongoose = require("mongoose");
 const expressHbs = require("express-handlebars");
 const {
@@ -85,5 +85,6 @@ app.use("/", indexRoutes);
 app.use("/", sellerRoutes);
 app.use("/", customerRoutes);
 app.use("/", deliveryRoutes);
+app.use("/", productRoutes);
 
 app.listen(port);
